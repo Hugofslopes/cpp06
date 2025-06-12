@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:27:56 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/04 16:49:09 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:41:00 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,40 +27,51 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter &other){
 
 ScalarConverter::~ScalarConverter(){}
 
-static bool isCharLiteral(const std::string& str) {
+bool isCharLiteral(const std::string& str) {
     return (str.length() == 1);
 }
 
-static bool isPseudoLiteral(const std::string& str) {
+bool isPseudoLiteral(const std::string& str) {
     return (str == "nan" || str == "nanf" ||
     str == "+inf" || str == "-inf" || str == "+inff" || str == "-inff");
 }
 
-static void print_int(bool pseudo, double value) {
-	std::cout << "int: ";
-    if (pseudo || value >  std::numeric_limits<int>::max() ||  std::numeric_limits<int>::min())
-        std::cout << "impossible" << std::endl;
-	else
-        std::cout << static_cast<int>(value) << std::endl;
+int string_to_int(const std::string& str) {
+    std::stringstream ss(str);
+    int result;
+    ss >> result;
+    return (result);
 }
 
-static void print_float(double value) {
+void print_int(bool pseudo, double value, std::string literal) {
+	std::cout << "int: ";
+    if (pseudo || value >  std::numeric_limits<int>::max() || \
+    value  < std::numeric_limits<int>::min())
+        std::cout << "impossible" << std::endl;
+	else
+    {
+        int n = string_to_int(literal);
+        std::cout << n << std::endl;
+    }
+}
+
+void print_float(double value) {
 	std::cout << "float: ";
     return static_cast<void>(std::cout << static_cast<float>(value) 
         << "f" << std::endl);
 }
 
-static bool isPrint(int value)
+bool isPrint(int value)
 {
     return (value >= 32 && value <= 126);
 }
 
-static bool isAscII(int value)
+bool isAscII(int value)
 {
     return (value >= 0 && value <= 127);
 }
 
-static void print_char(bool pseudo, double value) {
+void print_char(bool pseudo, double value) {
     std::cout << "char: ";
     if (pseudo)
         return (static_cast<void>((std::cout << "impossible" << std::endl)));
@@ -72,7 +83,7 @@ static void print_char(bool pseudo, double value) {
         std::cout << "Non displayable" << std::endl;
 }
 
-static void print_double(double value) {
+void print_double(double value) {
     std::cout << "double: ";
     std::cout << value << std::endl;
 }
@@ -113,7 +124,7 @@ void ScalarConverter::convert(const std::string literal) {
     if (getValueCheckParameters(literal, &value, &pseudo)){
         return ;}
 	print_char(pseudo, value);
-	print_int(pseudo, value);
+	print_int(pseudo, value, literal);
 	print_float(value);
 	print_double(value);
 }

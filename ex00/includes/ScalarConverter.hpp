@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:27:21 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/04 16:49:41 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/11 14:37:46 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include <cerrno>
 #include <cmath>
 #include <limits>
+#include <sstream>
+
 
 class ScalarConverter{
 	public:
