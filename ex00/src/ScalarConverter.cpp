@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:27:56 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/11 14:41:00 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/21 11:31:26 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,6 @@ ScalarConverter& ScalarConverter::operator=(const ScalarConverter &other){
 }
 
 ScalarConverter::~ScalarConverter(){}
-
-bool isCharLiteral(const std::string& str) {
-    return (str.length() == 1);
-}
 
 bool isPseudoLiteral(const std::string& str) {
     return (str == "nan" || str == "nanf" ||
@@ -90,11 +86,7 @@ void print_double(double value) {
 
 int getValueCheckParameters(const std::string literal, double *value, bool *pseudo)
 {
-    if (isCharLiteral(literal)) {
-        char c = literal[1];
-        *value = static_cast<double>(c);
-    }
-    else if (isPseudoLiteral(literal))
+    if (isPseudoLiteral(literal))
     {    
         *pseudo = true;
         if (literal == "nan" || literal == "nanf")
