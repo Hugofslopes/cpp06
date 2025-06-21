@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 18:25:35 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/04 18:36:15 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/21 11:49:25 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,13 @@ int main(){
 
     std::cout << "Identify by pointer: ";
     Base::identify(ptr);
-    usleep(150000);
+    delete ptr;
+    usleep(270000);
+    std::cout << std::endl;
     ptr = Base::generate();
     std::cout << "Identify by reference: ";
     Base::identify(*ptr);
+    std::cout << "Identify by pointer: ";
     Base::identify(ptr);
     delete ptr;
     return 0;

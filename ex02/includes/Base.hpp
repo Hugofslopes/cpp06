@@ -6,7 +6,7 @@
 /*   By: hfilipe- <hfilipe-@student.42porto.com>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/04 17:56:13 by hfilipe-          #+#    #+#             */
-/*   Updated: 2025/06/04 18:30:41 by hfilipe-         ###   ########.fr       */
+/*   Updated: 2025/06/21 11:47:41 by hfilipe-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define BASE_HPP
 
 # include <iostream>
-#include <cstdlib>
-#include <ctime>
+# include <cstdlib>
+# include <ctime>
 
 class Base{
     public:
