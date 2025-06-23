@@ -57,7 +57,7 @@ void print_int(bool pseudo, double value, std::string literal) {
 
 void print_float(double value) {
 	std::cout << "float: ";
-    return static_cast<void>(std::cout << static_cast<float>(value) 
+    return static_cast<void>(std::cout << static_cast<float>(value)
         << "f" << std::endl);
 }
 
